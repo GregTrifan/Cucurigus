@@ -1,2 +1,2 @@
 # Cucurigus
-Created with CodeSandbox
+## The best 🐓 in the West
