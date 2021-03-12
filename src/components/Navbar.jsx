@@ -8,10 +8,14 @@ import {
   MenuItem,
   Portal,
   Box,
-  useToast
+  useToast,
+  useColorMode,
+  useColorModeValue,
+  DarkMode
 } from "@chakra-ui/react";
 import { AiOutlineMenu } from "react-icons/ai";
 function Navbar() {
+  const { colorMode, toggleColorMode } = useColorMode();
   const toast = useToast();
   const Cucurigu = () => {
     toast({
@@ -24,19 +28,29 @@ function Navbar() {
   };
   return (
     <div>
-      <Box bg="black" w="100%" p={4} color="facebook">
-        <Menu>
-          {/* After further investigation the following would work if given an href="#" */}
-          <MenuButton colorScheme="#131313" as={Button}>
-            <AiOutlineMenu />
-          </MenuButton>
-          <Portal>
-            <MenuList>
-              <MenuItem onClick={Cucurigu}>Big Cock 🐓🐓🐓🐓</MenuItem>
-            </MenuList>
-          </Portal>
-        </Menu>
-      </Box>
+      <DarkMode>
+        <Box w="100%" p={4} bg="gray.900" color="white">
+          <Menu>
+            <MenuButton as={Button}>
+              <AiOutlineMenu />
+            </MenuButton>
+            <Portal>
+              <MenuList color="#FFFFFF" m={0}>
+                <MenuItem onClick={Cucurigu}>
+                  Big Cock
+                  <span role="img" aria-label="cocks">
+                    {" "}
+                    🐓🐓🐓🐓
+                  </span>
+                </MenuItem>
+                <MenuItem onClick={toggleColorMode}>
+                  {colorMode === "light" ? "Go Dark 🌙" : "Go Light 🌞"}
+                </MenuItem>
+              </MenuList>
+            </Portal>
+          </Menu>
+        </Box>
+      </DarkMode>
       <Stack
         padding={4}
         justifyContent="center"
